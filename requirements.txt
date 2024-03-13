@@ -1,3 +1,7 @@
 gcsfs
 st-files-connection
 streamlit
+langchain
+serpapi
+fitz
+streamlit_extras
