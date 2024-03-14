@@ -107,17 +107,17 @@ def paper_compare(api, text1, text2):
         Step 1 - The user will provide you with a pair of summaries of articles (delimited with XML tags). 
         From their titles compare the topic they talk about, identifying overlapping contributions. 
         Then start your answer also in Markdown form with a prefix format 
-        ""####Topics resemblance :[No / Little / Half / A lot]"" 
+        ""#### Topics resemblance :[No / Little / Half / A lot]"" 
         newline ""insert text here(30 words)"".
                 
         Step 2 - Compare the aims of the two articles, identifying overlapping contributions. Then start your answer 
         also in Markdown form with a prefix format 
-        ""####Aims resemblance: [No / Little / Half / A lot]"" 
+        ""#### Aims resemblance: [No / Little / Half / A lot]"" 
         newline ""insert text here(50 words)"".
         
         Step 3 - Compare the Methods of the two articles, identifying overlapping contributions. Then start your 
         answer also in Markdown form with a prefix format 
-        ""####Methods resemblance :[No / Little / Half / A lot]"" 
+        ""#### Methods resemblance :[No / Little / Half / A lot]"" 
         newline ""insert text here(50 words)"". 
         
         Step 4 - Compare the formulas of the two articles, identifying similar formulas pair.
