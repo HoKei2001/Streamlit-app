@@ -3,6 +3,6 @@ st-files-connection
 streamlit
 langchain
 serpapi
-fitz
+pymupdf
 streamlit_extras
 openai
