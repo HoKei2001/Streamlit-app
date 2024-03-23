@@ -21,7 +21,7 @@ if api == "" or api_key == "":
     st.warning("Please check your api keys in Settings")
     st.sidebar.success("❌ Nougat")
     st.sidebar.success("❌ Openai")
-    video_file = open('../video/demonstration.mp4', 'rb')
+    video_file = open('video/demonstration.mp4', 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
