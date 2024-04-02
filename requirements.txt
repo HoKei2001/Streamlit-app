@@ -6,3 +6,4 @@ serpapi
 pymupdf
 streamlit_extras
 openai
+lunardate
