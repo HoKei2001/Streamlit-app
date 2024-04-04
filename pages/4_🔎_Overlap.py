@@ -25,6 +25,7 @@ def compare2():
         st.sidebar.success("❌ Openai")
         video_file = open('video/demonstration.mp4', 'rb')
         video_bytes = video_file.read()
+        st.video(video_bytes)
     else:
         uploaded_file1 = st.sidebar.file_uploader("Upload Paper A", type="pdf")
         uploaded_file2 = st.sidebar.file_uploader("Upload Paper B", type="pdf")
