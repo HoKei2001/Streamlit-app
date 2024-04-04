@@ -1,5 +1,8 @@
 # **My first cpp game development try**
 
+> cpp
+> EasyX_20240225
+
 ```c++
     #include<graphics.h>
     #include<iostream>
