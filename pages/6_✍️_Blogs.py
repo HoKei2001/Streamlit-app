@@ -17,6 +17,7 @@ def cpp1():
         st.page_link("https://www.bilibili.com/video/BV1iQ4y1s7Qj/?share_source=copy_web&vd_source=cda810cbb5e85ca277470d72cd78e5c0", label="Click to Reference video", icon="📺")
         video_file = open('video/streamlit-streamlit_app-2024-04-04-19-04-83.webm', 'rb')
         video_bytes = video_file.read()
+        st.video(video_bytes)
 
 
 
