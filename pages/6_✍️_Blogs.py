@@ -20,7 +20,7 @@ def cpp1():
         st.video(video_bytes)
 
 def SVM():
-    st.markdown(blogpages/SVM/SVM.md)
+    st.markdown("blogpages/SVM/SVM.md")
 
 
 
