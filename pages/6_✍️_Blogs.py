@@ -19,10 +19,16 @@ def cpp1():
         video_bytes = video_file.read()
         st.video(video_bytes)
 
+def SVM():
+    with open("blogpages/SVM/SVM.md", "r", encoding="utf-8") as file:
+        markdown_text = file.read()
+    st.markdown(markdown_text)
+
 
 
 page_names_to_funcs = {
     "01 First try with cpp": cpp1(),
+    "02 SVM notes":  SVM()
 }
 
 demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
