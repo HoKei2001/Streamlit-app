@@ -20,9 +20,7 @@ def cpp1():
         st.video(video_bytes)
 
 def SVM():
-    with open("blogpages/SVM/SVM.md", "r", encoding="utf-8") as file:
-        markdown_text = file.read()
-    st.markdown(markdown_text)
+    st.markdown(blogpages/SVM/SVM.md)
 
 
 
