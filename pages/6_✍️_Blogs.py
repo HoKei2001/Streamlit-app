@@ -27,8 +27,8 @@ def SVM():
 
 
 page_names_to_funcs = {
-    "01 First try with cpp": cpp1(),
-    "02 SVM notes":  SVM()
+    "01 First try with cpp": cpp1,
+    "02 SVM notes":  SVM,
 }
 
 demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
