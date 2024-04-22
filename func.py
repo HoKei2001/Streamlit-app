@@ -28,10 +28,10 @@ def get_list(markdown, api_key):
         title = match.group(2).strip()
         sections.append("-" * level + f" {title}")
     put_text = "\n".join(sections)
-    llm = ChatOpenAI(model_name="gpt-4-1106-vision-preview", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)
     title_prompt = PromptTemplate(
         input_variables=["txt"],
-        template=""" 帮我整理目录格式，同时注意将所有的行内公式更换为$包裹的形式,不用显示标题，only return markdown code！
+        template=""" Help me format the table of contents, and be careful to replace all in-line formulas with $ wrapped form, without displaying the title!only return markdown code！
             {txt} 
             """
     )
@@ -43,21 +43,16 @@ def get_list(markdown, api_key):
 def split_markdown(markdown):
     sections = []
     pattern = re.compile(r'^(#+)\s+(.*)$', re.MULTILINE)
-    # 查找所有匹配的标题
     matches = list(pattern.finditer(markdown))
-    # 添加最后一个小节的结束位置
     last_position = len(markdown)
     for index, match in enumerate(matches):
         level = len(match.group(1))
         title = match.group(2).strip()
         start_position = match.start()
-
-        # 结束位置是下一个标题的开始位置，或者是文本的结束位置
         if index + 1 < len(matches):
             end_position = matches[index + 1].start()
         else:
             end_position = last_position
-        # 提取小节的文本内容
         section_text = markdown[start_position:end_position].strip()
         sections.append((title, level, section_text))
     return sections
@@ -72,7 +67,7 @@ def remove_last_100_chars(text):
 
 def paper_analysis(api, text):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-1106-vision-preview", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
@@ -118,7 +113,7 @@ def paper_analysis(api, text):
 
 def paper_compare(api, text1, text2):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-1106-vision-preview", temperature=0)  # "gpt-3.5-turbo-16k-0613"
+    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)  # "gpt-3.5-turbo-16k-0613"
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
@@ -172,7 +167,7 @@ def paper_compare(api, text1, text2):
 
 def paper_compare3(api, analysis1, compare12, compare13):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-1106-vision-preview", temperature=0)  # "gpt-3.5-turbo-16k-0613"
+    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)  # "gpt-3.5-turbo-16k-0613"
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
@@ -195,6 +190,7 @@ def paper_compare3(api, analysis1, compare12, compare13):
         Step 4 - 
         ""#### Main formulas :B or C (who are more similar to A  on topics)"" 
         newline ""insert text here(50 words)"". 
+        {txt}
     """
     )
     text = f"""
