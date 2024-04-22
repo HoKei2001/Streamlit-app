@@ -28,7 +28,7 @@ def get_list(markdown, api_key):
         title = match.group(2).strip()
         sections.append("-" * level + f" {title}")
     put_text = "\n".join(sections)
-    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-4", temperature=0)
     title_prompt = PromptTemplate(
         input_variables=["txt"],
         template=""" Help me format the table of contents, and be careful to replace all in-line formulas with $ wrapped form, without displaying the title!only return markdown code！
@@ -67,7 +67,7 @@ def remove_last_100_chars(text):
 
 def paper_analysis(api, text):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k-0613", temperature=0)
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
@@ -113,7 +113,7 @@ def paper_analysis(api, text):
 
 def paper_compare(api, text1, text2):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)  # "gpt-3.5-turbo-16k-0613"
+    llm = ChatOpenAI(model_name="gpt-4", temperature=0)  # "gpt-3.5-turbo-16k-0613"
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
@@ -167,7 +167,7 @@ def paper_compare(api, text1, text2):
 
 def paper_compare3(api, analysis1, compare12, compare13):
     os.environ["OPENAI_API_KEY"] = api
-    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)  # "gpt-3.5-turbo-16k-0613"
+    llm = ChatOpenAI(model_name="gpt-4", temperature=0)  # "gpt-3.5-turbo-16k-0613"
     prompt = PromptTemplate(
         input_variables=["txt"],
         template="""
