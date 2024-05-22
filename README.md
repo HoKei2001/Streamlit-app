@@ -34,58 +34,7 @@ Install via
 
 `pip install "nougat-ocr[api]"` or `pip install "nougat-ocr[dataset]"`
 
-#### Get prediction for a PDF
-
-##### CLI
-
-To get predictions for a PDF run
-
-```
-$ nougat path/to/file.pdf -o output_directory
-```
-
-A path to a directory or to a file where each line is a path to a PDF can also be passed as a positional argument
-
-```
-$ nougat path/to/directory -o output_directory
-```
-
-```
-usage: nougat [-h] [--batchsize BATCHSIZE] [--checkpoint CHECKPOINT] [--model MODEL] [--out OUT]
-              [--recompute] [--markdown] [--no-skipping] pdf [pdf ...]
-
-positional arguments:
-  pdf                   PDF(s) to process.
-
-options:
-  -h, --help            show this help message and exit
-  --batchsize BATCHSIZE, -b BATCHSIZE
-                        Batch size to use.
-  --checkpoint CHECKPOINT, -c CHECKPOINT
-                        Path to checkpoint directory.
-  --model MODEL_TAG, -m MODEL_TAG
-                        Model tag to use.
-  --out OUT, -o OUT     Output directory.
-  --recompute           Recompute already computed PDF, discarding previous predictions.
-  --full-precision      Use float32 instead of bfloat16. Can speed up CPU conversion for some setups.
-  --no-markdown         Do not add postprocessing step for markdown compatibility.
-  --markdown            Add postprocessing step for markdown compatibility (default).
-  --no-skipping         Don't apply failure detection heuristic.
-  --pages PAGES, -p PAGES
-                        Provide page numbers like '1-4,7' for pages 1 through 4 and page 7. Only works for single PDFs.
-```
-
-The default model tag is `0.1.0-small`. If you want to use the base model, use `0.1.0-base`.
-
-```
-$ nougat path/to/file.pdf -o output_directory -m 0.1.0-base
-```
-
-In the output directory every PDF will be saved as a `.mmd` file, the lightweight markup language, mostly compatible with [Mathpix Markdown](https://github.com/Mathpix/mathpix-markdown-it) (we make use of the LaTeX tables).
-
-> Note: On some devices the failure detection heuristic is not working properly. If you experience a lot of `[MISSING_PAGE]` responses, try to run with the `--no-skipping` flag. Related: [#11](https://github.com/facebookresearch/nougat/issues/11), [#67](https://github.com/facebookresearch/nougat/issues/67)
-
-#### API
+#### Get prediction for a PDF by API
 
 With the extra dependencies you use `app.py` to start an API. Call
 
@@ -211,3 +160,5 @@ python -m nougat.metrics path/to/results.json
 ### LangChain with LLM models
 
 > LangChain documents: https://python.langchain.com/v0.2/docs/introduction/
+
+If you can understand langchain's Prompt engineering approach, you can read the Q&A chain function within func.py, which is the key to this project
